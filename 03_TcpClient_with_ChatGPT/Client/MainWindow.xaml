@@ -1,0 +1,51 @@
+﻿<Window x:Class="Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label>IP:</Label>
+            <TextBox Name="tbip" Grid.Column="1" VerticalContentAlignment="Center"></TextBox>
+            <Label Grid.Column="2" HorizontalContentAlignment="Right">Port:</Label>
+            <TextBox Name="tbport" Grid.Column="3" VerticalContentAlignment="Center"></TextBox>
+        </Grid>
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Margin="20,0" Name="tbmessage" TextWrapping="Wrap"></TextBox>
+            <Button Click="SendBtn" Height="50" Grid.Column="1" Background="#FFB5E61D" FontSize="16">Send</Button>
+        </Grid>
+        <Label Grid.Row="2" HorizontalAlignment="Center" FontSize="16">Dialog:</Label>
+        <ListBox Name="lbmessage" Grid.Row="3" HorizontalContentAlignment="Stretch" Background="#FF99D9EA" Margin="5,5" BorderBrush="Black" BorderThickness="2" ScrollViewer.HorizontalScrollBarVisibility ="Disabled">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <TextBlock Text="{Binding Answer}" DockPanel.Dock="Left" Margin="15,0" MaxWidth="250" TextWrapping="Wrap"></TextBlock>
+                        <Label Content="{Binding Time}" DockPanel.Dock="Right"></Label>
+                        <TextBlock Text="{Binding Message}" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="15,0" MaxWidth="250" TextWrapping="Wrap"></TextBlock>
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
