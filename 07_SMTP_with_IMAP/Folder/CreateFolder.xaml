@@ -1,0 +1,22 @@
+﻿<Window x:Class="Self_Task_SMTP_IMAP.CreateFolder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Self_Task_SMTP_IMAP"
+        mc:Ignorable="d"
+        Title="CreateFolder" Height="100" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0" VerticalContentAlignment="Center" HorizontalAlignment="Center">Folder Name:</Label>
+        <TextBox Name="tbFolderName" Grid.Row="1" Grid.Column="0" Margin="5" VerticalContentAlignment="Center"/>
+        <Button Name="btnCreate" Grid.Row="1" Grid.Column="1" Margin="5" Click="CreateBtn">Create</Button>
+    </Grid>
+</Window>

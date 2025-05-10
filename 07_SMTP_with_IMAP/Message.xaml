@@ -1,0 +1,32 @@
+﻿<Window x:Class="Self_Task_SMTP_IMAP.Message"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Self_Task_SMTP_IMAP"
+        mc:Ignorable="d"
+        Title="Message" Height="500" Width="400">
+    <Grid>
+        <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Margin="10">
+            <TextBlock Text="From:" FontWeight="Bold" />
+            <TextBox Name="tbFrom" IsReadOnly="True" Margin="0,5,0,10" />
+
+            <TextBlock Text="To:" FontWeight="Bold" />
+            <TextBox Name="tbTo" IsReadOnly="True" Margin="0,5,0,10" />
+
+            <TextBlock Text="Date:" FontWeight="Bold" />
+            <TextBox Name="tbDate" IsReadOnly="True" Margin="0,5,0,10" />
+
+            <TextBlock Text="Subject:" FontWeight="Bold" />
+            <TextBox Name="tbSubject" IsReadOnly="True" Margin="0,5,0,10" />
+
+            <TextBlock Text="Message:" FontWeight="Bold" />
+            <TextBox Name="tbMessage" IsReadOnly="True" TextWrapping="Wrap" AcceptsReturn="True" Height="100" Margin="0,5,0,10" />
+
+            <TextBlock Text="Attachments:" FontWeight="Bold" />
+            <ListBox Name="lbAttachments" Height="50" Margin="0,5,0,10"/>
+
+            <Button Name="btnReply" Click="ReplyBtn">Reply</Button>
+        </StackPanel>
+    </Grid>
+</Window>
