@@ -1,0 +1,76 @@
+﻿<Window x:Class="Self_Task_HTTP_Download_Files.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:Self_Task_HTTP_Download_Files"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="810">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Label>Path:</Label>
+        <TextBox VerticalContentAlignment="Center" Name="tbPath" Grid.Column="1"></TextBox>
+        <Button Click="SourceBtn" Grid.Column="2">Source</Button>
+
+        <Label Grid.Row="1">URL:</Label>
+        <TextBox VerticalContentAlignment="Center" Name="tbURL" Grid.Row="1" Grid.Column="1"></TextBox>
+        <DockPanel Grid.Row="1" Grid.Column="2">
+            <xctk:IntegerUpDown Name="numberBox" Minimum="1" Value="1" Margin="5,2" />
+            <ComboBox Name="cbTags" VerticalContentAlignment="Center" Margin="5,2" MinWidth="75"></ComboBox>
+            <Button Click="DownloadBtn" Margin="5,2">Download</Button>
+        </DockPanel>
+
+        <DockPanel Grid.Row="2" Grid.Column="1" LastChildFill="False" HorizontalAlignment="Center">
+            <Label>Filter by:</Label>
+            <Button Click="ClearBtn" Name="btnClear" DockPanel.Dock="Right" IsEnabled="False">Clear</Button>
+            <ComboBox VerticalContentAlignment="Center" Name="cbFilter" MinWidth="100" SelectionChanged="cbFilter_SelectionChanged"></ComboBox>
+        </DockPanel>
+        <ComboBox Name="statusFiles" Grid.Row="2" SelectionChanged="statusFiles_SelectionChanged"></ComboBox>
+        
+        <ListBox Name="lbFiles" Grid.Row="3" Grid.ColumnSpan="3" Margin="10" BorderBrush="Black" BorderThickness="1" MouseDoubleClick="lbFiles_MouseDoubleClick" HorizontalContentAlignment="Stretch" ContextMenuOpening="lbFiles_ContextMenuOpening">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding FileName}" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center"></TextBlock>
+                        <ProgressBar Value="{Binding Percentage}" MinWidth="200" Grid.Column="1" Height="20" Margin="5,0"></ProgressBar>
+                        <TextBlock Text="{Binding Progress}" Grid.Column="2" Height="20" Margin="5,0" TextAlignment="Center"></TextBlock>
+                        <TextBlock Text="{Binding TagStr}" Grid.Column="3" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center"></TextBlock>
+                        <Button Click="ActionBtn" IsEnabled="{Binding IsActionEnabled}" Content="{Binding TextBtnStr}" Margin="10,5" Padding="5" Grid.Column="4"></Button>
+                        <Button Click="CancelBtn" IsEnabled="{Binding IsActionEnabled}" Margin="10,5" Padding="5" Grid.Column="5">Cancel</Button>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ContextMenu>
+                <ContextMenu Name="contextMenu">
+                    <MenuItem Header="Open File" Click="OpenFileBtn"></MenuItem>
+                    <MenuItem Header="Open Folder" Click="OpenFolderBtn"></MenuItem>
+                    <MenuItem Header="Rename file" Click="RenameFileBtn"></MenuItem>
+                    <MenuItem Header="Move file" Click="MoveFileBtn"></MenuItem>
+                    <MenuItem Header="Remove Download" Click="RemoveBtn"></MenuItem>
+                    <MenuItem Header="Remove File" Click="RemoveFileBtn"></MenuItem>
+                </ContextMenu>
+            </ListBox.ContextMenu>
+        </ListBox>
+        
+    </Grid>
+</Window>
