@@ -39,7 +39,7 @@
         </DockPanel>
         <ComboBox Name="statusFiles" Grid.Row="2" SelectionChanged="statusFiles_SelectionChanged"></ComboBox>
         
-        <ListBox Name="lbFiles" Grid.Row="3" Grid.ColumnSpan="3" Margin="10" BorderBrush="Black" BorderThickness="1" MouseDoubleClick="lbFiles_MouseDoubleClick" HorizontalContentAlignment="Stretch" ContextMenuOpening="lbFiles_ContextMenuOpening">
+        <ListBox Name="lbFiles" Grid.Row="3" Grid.ColumnSpan="3" Margin="10" BorderBrush="Black" BorderThickness="1" MouseDoubleClick="lbFiles_MouseDoubleClick" HorizontalContentAlignment="Stretch" ContextMenuOpening="lbFiles_ContextMenuOpening" KeyDown="lbFiles_KeyDown">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>

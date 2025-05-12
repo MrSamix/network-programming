@@ -504,4 +504,24 @@ public partial class MainWindow : Window
             e.Handled = true;
         }
     }
+
+    private void lbFiles_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (lbFiles.SelectedIndex == -1)
+        {
+            return;
+        }
+        if (e.Key == Key.Delete)
+        {
+            RemoveBtn(null, null);
+        }
+        else if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.R)
+        {
+            RenameFileBtn(null, null);
+        }
+        else if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.X)
+        {
+            MoveFileBtn(null, null);
+        }
+    }
 }
