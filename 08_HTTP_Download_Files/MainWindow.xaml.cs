@@ -92,6 +92,7 @@ public partial class MainWindow : Window
                 }
 
                 file.Progress = "Completed";
+                file.IsCompleted = true;
             }
         }
         catch (OperationCanceledException)
@@ -116,6 +117,7 @@ public partial class MainWindow : Window
         public CancellationTokenSource CancellationTokenSource { get; set; }
         public CancellationToken Token { get; set; }
         public bool IsCanceled { get; set; } = false;
+        public bool IsCompleted { get; set; } = false;
         public CopyProcessInfo(string filename, string url, string path, CancellationTokenSource cancellationTokenSource)
         {
             FileName = filename;
@@ -129,7 +131,10 @@ public partial class MainWindow : Window
         {
             try
             {
-                CancellationTokenSource.Cancel();
+                if (IsCompleted == false)
+                {
+                    CancellationTokenSource.Cancel();
+                }
             }
             catch (OperationCanceledException)
             {
@@ -168,6 +173,13 @@ public partial class MainWindow : Window
         Button btn = (Button)sender;
         btn.IsEnabled = false;
         CopyProcessInfo file = (CopyProcessInfo)selected_elem;
-        file.Cancel();
+        if (file.IsCompleted == false)
+        {
+            file.Cancel();
+        }
+        else
+        {
+            MessageBox.Show("File already downloaded", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 }
